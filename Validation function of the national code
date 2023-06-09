@@ -1,0 +1,40 @@
+def NationalCode(text):
+    #Checking for the number of digits of the national code entered
+    if len(text) !=10: return False
+    
+    #Checking so that the entered numbers of the national code are not duplicated
+    if text == "000000000": return False
+    if text == "111111111": return False
+    if text == "222222222": return False
+    if text == "333333333": return False
+    if text == "444444444": return False
+    if text == "555555555": return False
+    if text == "666666666": return False
+    if text == "777777777": return False
+    if text == "888888888": return False
+    if text == "999999999": return False 
+    
+    #The main formula for calculating the national code
+    check = int(text[0]) * 10 
+    check = check + int(text[1]) * 9
+    check = check + int(text[2]) * 8
+    check = check + int(text[3]) * 7
+    check = check + int(text[4]) * 6
+    check = check + int(text[5]) * 5
+    check = check + int(text[6]) * 4
+    check = check + int(text[7]) * 3
+    check = check + int(text[8]) * 2
+
+    
+    LastChar = int (text[9])
+    remain = check % 11
+    
+    if remain == 0 and remain == LastChar: return True
+    if remain == 1 and remain == LastChar: return True
+    if remain > 1 and LastChar == 11 - remain: return True
+    
+    return False
+
+#test
+nationalCode = "0022283552"
+print (NationalCode(nationalCode))
